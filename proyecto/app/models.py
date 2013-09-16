@@ -2,9 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from cities_light.models import City
 from django.db.models.signals import post_save
-# import fields
-
-
 
 # Create your models here.
 
@@ -23,11 +20,11 @@ class Categoria(models.Model):
 # Snippet para extender la clase User
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)
-    conocimientos = models.TextField()
-    dias = models.ManyToManyField(DiaSemana)
-    tiempo_de = models.TimeField(null=True)
-    tiempo_a = models.TimeField(null=True)
-    localidad = models.OneToOneField(City, null=True)
+    conocimientos = models.TextField(null=True, blank=True)
+    dias = models.ManyToManyField(DiaSemana, null=True, blank=True)
+    tiempo_de = models.TimeField(null=True, blank=True)
+    tiempo_a = models.TimeField(null=True, blank=True)
+    localidad = models.OneToOneField(City, null=True, blank=True)
 
 
     def __str__(self):  
