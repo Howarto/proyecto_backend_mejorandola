@@ -1,3 +1,4 @@
+#encoding:utf-8
 from django.db import models
 from django.contrib.auth.models import User
 from cities_light.models import City
@@ -26,9 +27,12 @@ class UserProfile(models.Model):
     tiempo_a = models.TimeField(null=True, blank=True)
     localidad = models.OneToOneField(City, null=True, blank=True)
 
-
     def __str__(self):  
-          return "%s's profile" % self.user  
+        return "%s's profile" % self.user
+
+    def days_of_week(self):
+        return ', '.join([obj.nombre for obj in self.dias.all()])
+    days_of_week.short_description = 'Días de la semana'
 
 def create_user_profile(sender, instance, created, **kwargs):  
     if created:  
