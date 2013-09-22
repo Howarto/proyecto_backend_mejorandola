@@ -36,13 +36,16 @@ def categoria(request,id_categoria):
 @login_required
 def add(request):
     if request.POST:
-        form = EnlaceForm(request.POST, request.FILES)
+        form = ProyectoForm(request.POST, request.FILES)
         if form.is_valid():
-            enlace = form.save(commit = False)
-            enlace.usuario = request.user
-            enlace.save()
+            proyecto = form.save(commit = False)
+            proyecto.save()
             return HttpResponseRedirect("/")
     else:
-        form = EnlaceForm()
-    template = "singin.html"
+        form = ProyectoForm()
+    template = "signin.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
+
+def signin(request):
+    template = "signin.html"
+    return render(request, template,locals())
