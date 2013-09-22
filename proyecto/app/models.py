@@ -18,6 +18,7 @@ class Categoria(models.Model):
     def __unicode__(self):
     	return self.title
 
+# ------------------------------------------------------------------------------
 # Snippet para extender la clase User
 class UserProfile(models.Model):  
     user = models.OneToOneField(User)
@@ -41,3 +42,16 @@ def create_user_profile(sender, instance, created, **kwargs):
 post_save.connect(create_user_profile, sender=User) 
 
 User.profile = property(lambda u: u.get_profile() )
+
+# ------------------------------------------------------------------------------
+
+class Proyecto(models.Model):
+    name = models.CharField(max_length = 140)
+    detalles = models.TextField()
+    categoria = models.OneToOneField(Categoria)
+    participantes = models.ManyToManyField(User)
+    # tecnologia = 
+    github = models.URLField(null = True, blank = True)
+
+    def __unicode__(self):
+        return self.name

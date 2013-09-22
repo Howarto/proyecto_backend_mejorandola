@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Categoria, UserProfile, DiaSemana
+from models import Categoria, UserProfile, DiaSemana, Proyecto
 from django.contrib.auth.models import User
 
 class UserProfileAdmin(admin.ModelAdmin):
@@ -8,4 +8,4 @@ class UserProfileAdmin(admin.ModelAdmin):
 
 admin.site.register(Categoria)
 admin.site.register(UserProfile, UserProfileAdmin)
-# admin.site.register(DiaSemana)
+admin.site.register(Proyecto)
