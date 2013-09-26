@@ -16,6 +16,11 @@ def account(request):
     template = "account.html"
     return render(request, template,locals())
 
+def proyectos(request):
+	proyectos = Proyecto.objects.all()
+	template = "proyectos.html"
+	return render(request, template, locals())
+
 # @login_required
 # def minus(request,enlace_id):
 #     enlace = get_object_or_404(Enlace,pk=enlace_id)
