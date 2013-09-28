@@ -89,7 +89,10 @@
           <h3>Detalles:</h3>
           <p>{{proyecto.detalles}}</p>
           <h3>Participantes:</h3>
-          <p>{{proyecto.participantes}}</p>
+{#             Le he tenido que añadir un .all para poder recorrer el ManyToMany, si no tira error #}
+            {% for participante in proyecto.participantes.all %}
+            <p>{{participante}}</p>
+            {% endfor %}
           <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
         </div>
 
