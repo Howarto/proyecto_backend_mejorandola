@@ -86,13 +86,13 @@
         {% for proyecto in proyectos %}
         <div class="span4">
           <h2>{{proyecto.name}} </h2>
-          <p>{{proyecto.detalles}}</p>
+          <p>{{proyecto.resumen}}</p>
           <p><a class="btn" href="http://getbootstrap.com/2.3.2/examples/hero.html#">View details »</a></p>
         </div>
         {% endfor %}
 
         {% else %}
-          NO HAY PROYECTOS AÚN
+          <h1>NO HAY PROYECTOS AÚN</h1>
         {% endif %}
 
       </div>
@@ -108,7 +108,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="./Bootstrap, from Twitter_files/jquery.js"></script>
+    <script src="/bootstrap/jquery.js"></script>
     <script src="./Bootstrap, from Twitter_files/bootstrap-transition.js"></script>
     <script src="./Bootstrap, from Twitter_files/bootstrap-alert.js"></script>
     <script src="./Bootstrap, from Twitter_files/bootstrap-modal.js"></script>

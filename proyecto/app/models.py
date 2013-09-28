@@ -47,6 +47,7 @@ User.profile = property(lambda u: u.get_profile() )
 
 class Proyecto(models.Model):
     name = models.CharField(max_length = 140)
+    resumen = models.CharField(max_length = 140)
     detalles = models.TextField()
     categoria = models.OneToOneField(Categoria)
     participantes = models.ManyToManyField(User)
