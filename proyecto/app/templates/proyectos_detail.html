@@ -82,15 +82,16 @@
       <!-- Columna para proyectos -->
       <div class="row">
 
-        {% if proyectos %}
+        {% if proyecto %}
 
-        {% for proyecto in proyectos %}
         <div class="span4">
           <h2>{{proyecto.name}} </h2>
-          <p>{{proyecto.resumen}}</p>
-          <p><a class="btn" href="http://getbootstrap.com/2.3.2/examples/hero.html#">View details »</a></p>
+          <h3>Detalles:</h3>
+          <p>{{proyecto.detalles}}</p>
+          <h3>Participantes:</h3>
+          <p>{{proyecto.participantes}}</p>
+          <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
         </div>
-        {% endfor %}
 
         {% else %}
           <h1>NO HAY PROYECTOS AÚN</h1>

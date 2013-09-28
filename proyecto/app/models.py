@@ -49,7 +49,7 @@ class Proyecto(models.Model):
     name = models.CharField(max_length = 140)
     resumen = models.CharField(max_length = 140)
     detalles = models.TextField()
-    categoria = models.OneToOneField(Categoria)
+    categoria = models.ForeignKey(Categoria)
     participantes = models.ManyToManyField(User)
     # tecnologia = 
     github = models.URLField(null = True, blank = True)
