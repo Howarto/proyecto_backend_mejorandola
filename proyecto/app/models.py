@@ -28,7 +28,7 @@ class UserProfile(models.Model):
     tiempo_a = models.TimeField(null=True, blank=True)
     localidad = models.OneToOneField(City, null=True, blank=True)
 
-    def __str__(self):  
+    def __str__(self):
         return "%s's profile" % self.user
 
     def days_of_week(self):
@@ -45,11 +45,11 @@ User.profile = property(lambda u: u.get_profile() )
 
 # ------------------------------------------------------------------------------
 class Comentario(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     texto = models.TextField()
 
     def __unicode__(self):
-        return self.user, self.texto
+        return unicode(self.user)
 
 class Proyecto(models.Model):
     name = models.CharField(max_length = 140)

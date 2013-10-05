@@ -82,8 +82,6 @@
       <!-- Columna para proyectos -->
       <div class="row">
 
-        {% if proyecto %}
-
         <div class="span4">
           <h2>{{proyecto.name}} </h2>
           <h3>Detalles:</h3>
@@ -91,14 +89,19 @@
           <h3>Participantes:</h3>
 {#             Le he tenido que añadir un .all para poder recorrer el ManyToMany, si no tira error #}
             {% for participante in proyecto.participantes.all %}
-            <p>{{participante}}</p>
-            {% endfor %}
+            <h4><p>{{participante | capfirst}}</p>
+            {% endfor %}</h4>
           <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
+          <h3>COMENTARIOS:</h3>
+            {%if proyecto.comentarios.all != "" %}
+              {% for comentario in proyecto.comentarios.all %}
+                <h4><p>{{comentario.user | capfirst}}:</p></h2> 
+                  <h5>{{comentario.texto}}</h5>
+              {%endfor%}
+            {%else%}
+              <h4><p>No hay comentarios</p></h4> 
+            {%endif%}
         </div>
-
-        {% else %}
-          <h1>NO HAY PROYECTOS AÚN</h1>
-        {% endif %}
 
       </div>
 
