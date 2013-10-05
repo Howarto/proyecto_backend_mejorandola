@@ -21,7 +21,7 @@ class Categoria(models.Model):
 # ------------------------------------------------------------------------------
 # Snippet para extender la clase User
 class UserProfile(models.Model):  
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User)
     conocimientos = models.TextField(null=True, blank=True)
     dias = models.ManyToManyField(DiaSemana, null=True, blank=True)
     tiempo_de = models.TimeField(null=True, blank=True)
@@ -44,6 +44,12 @@ post_save.connect(create_user_profile, sender=User)
 User.profile = property(lambda u: u.get_profile() )
 
 # ------------------------------------------------------------------------------
+class Comentario(models.Model):
+    user = models.OneToOneField(User)
+    texto = models.TextField()
+
+    def __unicode__(self):
+        return self.user, self.texto
 
 class Proyecto(models.Model):
     name = models.CharField(max_length = 140)
@@ -51,8 +57,9 @@ class Proyecto(models.Model):
     detalles = models.TextField()
     categoria = models.ForeignKey(Categoria)
     participantes = models.ManyToManyField(User)
-    # tecnologia = 
     github = models.URLField(null = True, blank = True)
+    votos = models.IntegerField(default = 0)
+    comentarios = models.ManyToManyField(Comentario)
 
     def __unicode__(self):
         return self.name

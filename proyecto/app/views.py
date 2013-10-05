@@ -28,3 +28,17 @@ class ProyectoDetailView(DetailView):
     context_object_name = 'proyecto'
     def get_template_names(self):
         return 'proyectos_detail.html'
+
+@login_required
+def minus(request,proyecto_id):
+    proyecto = get_object_or_404(Proyecto,pk=proyecto_id)
+    proyecto.votos = proyecto.votos - 1
+    proyecto.save()
+    return HttpResponseRedirect("/")
+
+@login_required
+def plus(request,proyecto_id):
+    proyecto = get_object_or_404(Proyecto,pk=proyecto_id)
+    proyecto.votos = proyecto.votos + 1
+    proyecto.save()
+    return HttpResponseRedirect("/")
