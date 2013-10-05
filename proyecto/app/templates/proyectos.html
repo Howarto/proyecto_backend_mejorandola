@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    <link rel="stylesheet" href="{% static "estilos.css" %}" />
     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -80,7 +81,7 @@
       </div>
 
       <!-- Columna para proyectos -->
-      <div class="row">
+      <div class="row" id="contenido">
 
         {% if proyectos %}
 
@@ -89,6 +90,11 @@
           <h2>{{proyecto.name}} </h2>
           <p>{{proyecto.resumen}}</p>
           <p><a class="btn" href="/proyectos/{{proyecto.id}}">View details »</a></p>
+          <p class="votacion">
+            <a class="up" href="{% url "plus" proyecto.pk %}"></a>
+            {{proyecto.votos}}
+            <a class="down" href="{% url "minus" proyecto.pk %}"></a>
+          </p>
         </div>
         {% endfor %}
 

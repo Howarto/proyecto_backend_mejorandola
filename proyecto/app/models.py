@@ -59,7 +59,7 @@ class Proyecto(models.Model):
     participantes = models.ManyToManyField(User)
     github = models.URLField(null = True, blank = True)
     votos = models.IntegerField(default = 0)
-    comentarios = models.ManyToManyField(Comentario)
+    comentarios = models.ManyToManyField(Comentario, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
