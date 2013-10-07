@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^proyectos/$', ProyectoListView.as_view(), name='proyectos'),
     url(r'^proyectos/plus/(\d+)$', 'app.views.plus', name='plus'),
     url(r'^minus/(\d+)$', 'app.views.minus', name='minus'),
+    url(r'^add/$', 'app.views.add', name='add'),
     url(r'^proyectos/(?P<pk>[\d]+)$', ProyectoDetailView.as_view(), name='proyecto'),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -42,3 +42,20 @@ def plus(request,proyecto_id):
     proyecto.votos = proyecto.votos + 1
     proyecto.save()
     return HttpResponseRedirect("/proyectos")
+
+
+@login_required
+def add(request):
+    if request.POST:
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+            comentario = form.save(commit = False)
+            comentario.user = request.user
+            comentario.save()
+            return HttpResponseRedirect("/")
+    else:
+        form = ComentarioForm()
+    template = "add_comment.html"
+    return render_to_response(template,context_instance=RequestContext(request,locals()))
+
+
