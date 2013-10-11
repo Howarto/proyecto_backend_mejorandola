@@ -45,7 +45,20 @@ def plus(request,proyecto_id):
 
 
 @login_required
-def add(request):
+def add_project(request):
+    if request.POST:
+        form = ProyectoForm(request.POST)
+        if form.is_valid():
+            proyecto = form.save(commit = False)
+            proyecto.user = request.user
+            proyecto.save()
+            return HttpResponseRedirect("/")
+    else:
+        form = ProyectoForm()
+    template = "add_project.html"
+    return render_to_response(template,context_instance=RequestContext(request,locals()))
+
+def add_comment(request):
     if request.POST:
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -57,5 +70,4 @@ def add(request):
         form = ComentarioForm()
     template = "add_comment.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
-
 

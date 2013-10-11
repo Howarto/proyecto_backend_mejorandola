@@ -5,7 +5,7 @@ from models import *
 class ComentarioForm(ModelForm):
     
     class Meta:
-        model = Comentario
+        model = Proyecto
         
 class ComentarioForm(ModelForm):
     
