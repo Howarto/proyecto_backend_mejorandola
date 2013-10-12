@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
+    <link rel="stylesheet" href="{% static "css_votos/estilos.css" %}" />
     <link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
       body {
@@ -41,22 +42,22 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="http://getbootstrap.com/2.3.2/examples/hero.html#">Project name</a>
+          <a class="brand" href="">Project name</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">Home</a></li>
-              <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#about">About</a></li>
-              <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#contact">Contact</a></li>
+              <li class="active"><a href="">Home</a></li>
+              <li><a href="">About</a></li>
+              <li><a href="">Contact</a></li>
               <li class="dropdown">
-                <a href="http://getbootstrap.com/2.3.2/examples/hero.html#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">Action</a></li>
-                  <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">Another action</a></li>
-                  <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">Something else here</a></li>
+                  <li><a href="">Action</a></li>
+                  <li><a href="">Another action</a></li>
+                  <li><a href="">Something else here</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">Nav header</li>
-                  <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">Separated link</a></li>
-                  <li><a href="http://getbootstrap.com/2.3.2/examples/hero.html#">One more separated link</a></li>
+                  <li><a href="">Separated link</a></li>
+                  <li><a href="">One more separated link</a></li>
                 </ul>
               </li>
             </ul>
@@ -76,12 +77,11 @@
       <div class="hero-unit">
         <h1>¡Bienvenido!</h1>
         <p> Esta es la página para los proyectos! </p>
-        <p><a href="http://getbootstrap.com/2.3.2/examples/hero.html#" class="btn btn-primary btn-large">Learn more »</a></p>
+        <p><a href="" class="btn btn-primary btn-large">Learn more »</a></p>
       </div>
 
       <!-- Columna para proyectos -->
       <div class="row">
-
         <div class="span4">
           <h2>{{proyecto.name}} </h2>
           <h3>Detalles:</h3>
@@ -93,6 +93,15 @@
             {% endfor %}</h4>
           <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
           <h3>COMENTARIOS:</h3>
+
+                <form method="post">
+                  <div id="form">
+                      {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit">
+                <form>
+                </div>
+                  
             {%if proyecto.comentarios.all != "" %}
               {% for comentario in proyecto.comentarios.all %}
                 <h4><p>{{comentario.user | capfirst}}:</p></h2> 
@@ -102,7 +111,6 @@
               <h4><p>No hay comentarios</p></h4> 
             {%endif%}
         </div>
-
       </div>
 
       <hr>

@@ -44,13 +44,6 @@ post_save.connect(create_user_profile, sender=User)
 User.profile = property(lambda u: u.get_profile() )
 
 # ------------------------------------------------------------------------------
-class Comentario(models.Model):
-    user = models.ForeignKey(User)
-    texto = models.TextField()
-
-    def __unicode__(self):
-        return unicode(self.user)
-
 class Proyecto(models.Model):
     name = models.CharField(max_length = 140)
     resumen = models.CharField(max_length = 140)
@@ -59,7 +52,15 @@ class Proyecto(models.Model):
     participantes = models.ManyToManyField(User)
     github = models.URLField(null = True, blank = True)
     votos = models.IntegerField(default = 0)
-    comentarios = models.ManyToManyField(Comentario, null=True, blank=True)
 
     def __unicode__(self):
         return self.name
+
+class Comentario(models.Model):
+    author = models.CharField(max_length=140)
+    created = models.DateTimeField(auto_now_add = True)
+    body = models.TextField()
+    proyecto = models.ForeignKey(Proyecto)
+
+    def __unicode__(self):
+        return unicode("%s: %s" % (self.proyecto, self.body[:60]))

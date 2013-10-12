@@ -6,7 +6,10 @@ class UserProfileAdmin(admin.ModelAdmin):
 	list_display = ('user', 'days_of_week', 'tiempo_de', 'tiempo_a',)
 	raw_id_fields = ('user', 'localidad',)
 
+class ComentarioAdmin(admin.ModelAdmin):
+	list_display = ("proyecto", "author", "created")
+
 admin.site.register(Categoria)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(Proyecto)
-admin.site.register(Comentario)
+admin.site.register(Comentario, ComentarioAdmin)

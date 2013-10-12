@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^proyectos/plus/(\d+)$', 'app.views.plus', name='plus'),
     url(r'^minus/(\d+)$', 'app.views.minus', name='minus'),
     url(r'^add_project/$', 'app.views.add_project', name='add_project'),
-    url(r'^add_comment/$', 'app.views.add_comment', name='add_comment'),
+    url(r'^add_comment/(\d+)$', 'app.views.add_comment', name='add_comment'),
     url(r'^proyectos/(?P<pk>[\d]+)$', ProyectoDetailView.as_view(), name='proyecto'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
