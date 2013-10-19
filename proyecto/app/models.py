@@ -55,12 +55,3 @@ class Proyecto(models.Model):
 
     def __unicode__(self):
         return self.name
-
-class Comentario(models.Model):
-    author = models.CharField(max_length=140)
-    created = models.DateTimeField(auto_now_add = True)
-    body = models.TextField()
-    proyecto = models.ForeignKey(Proyecto)
-
-    def __unicode__(self):
-        return unicode("%s: %s" % (self.proyecto, self.body[:60]))

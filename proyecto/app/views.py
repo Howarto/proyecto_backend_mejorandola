@@ -58,16 +58,16 @@ def add_project(request):
     template = "add_project.html"
     return render_to_response(template,context_instance=RequestContext(request,locals()))
 
-def add_comment(request):
-    if request.POST:
-        form = ComentarioForm(request.POST)
-        if form.is_valid():
-            comentario = form.save(commit = False)
-            comentario.user = request.user
-            comentario.save()
-            return HttpResponseRedirect("/")
-    else:
-        form = ComentarioForm()
-    template = "add_comment.html"
-    return render_to_response(template,context_instance=RequestContext(request,locals()))
+# def add_comment(request):
+#     if request.POST:
+#         form = ComentarioForm(request.POST)
+#         if form.is_valid():
+#             comentario = form.save(commit = False)
+#             comentario.user = request.user
+#             comentario.save()
+#             return HttpResponseRedirect("/")
+#     else:
+#         form = ComentarioForm()
+#     template = "add_comment.html"
+#     return render_to_response(template,context_instance=RequestContext(request,locals()))
 

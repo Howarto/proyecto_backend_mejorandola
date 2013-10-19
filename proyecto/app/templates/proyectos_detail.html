@@ -1,5 +1,4 @@
 {% load static from staticfiles %}
-
 <!DOCTYPE html>
 <!-- saved from url=(0048)http://getbootstrap.com/2.3.2/examples/hero.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -93,15 +92,7 @@
             {% endfor %}</h4>
           <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
           <h3>COMENTARIOS:</h3>
-
-                <form method="post">
-                  <div id="form">
-                      {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit">
-                <form>
-                </div>
-                  
+    
             {%if proyecto.comentarios.all != "" %}
               {% for comentario in proyecto.comentarios.all %}
                 <h4><p>{{comentario.user | capfirst}}:</p></h2> 

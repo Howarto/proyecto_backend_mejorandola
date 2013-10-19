@@ -126,7 +126,6 @@ INSTALLED_APPS = (
     'cities_light',
     'django.contrib.staticfiles',
     'mockups',
-    'django.contrib.comments',
     # Uncomment the next line to enable the admin:
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

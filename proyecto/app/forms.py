@@ -6,10 +6,3 @@ class ProyectoForm(ModelForm):
     class Meta:
         model = Proyecto
         exclude = ("comentarios", "votos", "participantes")
-
-        
-class ComentarioForm(ModelForm):
-    class Meta:
-        model = Comentario
-        exclude = ("user",)
-        
