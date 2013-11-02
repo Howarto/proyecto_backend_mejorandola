@@ -1,4 +1,6 @@
 {% load static from staticfiles %}
+{% load comments %}
+
 <!DOCTYPE html>
 <!-- saved from url=(0048)http://getbootstrap.com/2.3.2/examples/hero.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -82,25 +84,35 @@
       <!-- Columna para proyectos -->
       <div class="row">
         <div class="span4">
+
           <h2>{{proyecto.name}} </h2>
+
           <h3>Detalles:</h3>
+
           <p>{{proyecto.detalles}}</p>
+
           <h3>Participantes:</h3>
-{#             Le he tenido que añadir un .all para poder recorrer el ManyToMany, si no tira error #}
+
+          {#Le he tenido que añadir un .all para poder recorrer el ManyToMany, si no tira error #}
             {% for participante in proyecto.participantes.all %}
-            <h4><p>{{participante | capfirst}}</p>
+              <h4><p>{{participante | capfirst}}</p>
             {% endfor %}</h4>
+
           <h3><a href="{{proyecto.github}}" target="_blank">Github</a></h3>
+
           <h3>COMENTARIOS:</h3>
-    
-            {%if proyecto.comentarios.all != "" %}
-              {% for comentario in proyecto.comentarios.all %}
-                <h4><p>{{comentario.user | capfirst}}:</p></h2> 
-                  <h5>{{comentario.texto}}</h5>
-              {%endfor%}
-            {%else%}
-              <h4><p>No hay comentarios</p></h4> 
-            {%endif%}
+
+            {% get_comment_count for proyecto as comment_count %}
+
+            <h4>{{ comment_count }} comments have been posted.</h4>
+
+            <h5>{% render_comment_list for proyecto %}</h5>
+
+          <h3>¡Comenta!</h3>
+          
+            {% render_comment_form for proyecto %}
+
+
         </div>
       </div>
 

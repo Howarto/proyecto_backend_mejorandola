@@ -13,6 +13,7 @@ urlpatterns = patterns('',
     url(r'^minus/(\d+)$', 'app.views.minus', name='minus'),
     url(r'^add_project/$', 'app.views.add_project', name='add_project'),
     url(r'^proyectos/(?P<pk>[\d]+)$', ProyectoDetailView.as_view(), name='proyecto'),
+    url(r'^comentarios/', include('django.contrib.comments.urls')),
     
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
